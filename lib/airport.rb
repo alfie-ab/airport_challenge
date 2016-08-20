@@ -1,6 +1,7 @@
 class Airport
 
-  def airport
+
+  def placeholder
   end
 
 end
