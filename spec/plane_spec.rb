@@ -36,4 +36,9 @@ describe Plane do
     expect(subject.landed).to eq false
   end
 
+  it 'should raise an error if you try to land at another airport while landed' do
+    subject.land(airport)
+    expect{subject.land(airport)}.to raise_error(RuntimeError)
+  end
+
 end

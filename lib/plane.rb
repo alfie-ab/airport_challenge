@@ -10,6 +10,7 @@ attr_reader :landed, :airport
   end
 
   def land(airport)
+    fail "You can only land at one airport at a time" if full?
     @airport << airport
     @landed = true
   end
@@ -17,6 +18,12 @@ attr_reader :landed, :airport
   def take_off
     @airport.pop
     @landed = false
+  end
+
+  private
+
+  def full?
+    @airport.count >= 1
   end
 
 end
