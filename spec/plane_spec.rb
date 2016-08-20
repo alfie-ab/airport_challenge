@@ -27,11 +27,13 @@ describe Plane do
   end
 
   it 'should be able to take off from an airport' do
+    subject.land(airport)
     subject.take_off
     expect(subject.airport).to eq []
   end
 
   it 'should change its landed status to false to show it is no longer at an airport' do
+    subject.land(airport)
     subject.take_off
     expect(subject.landed).to eq false
   end
@@ -39,6 +41,11 @@ describe Plane do
   it 'should raise an error if you try to land at another airport while landed' do
     subject.land(airport)
     expect{subject.land(airport)}.to raise_error(RuntimeError)
+  end
+
+  it 'should raise an error if trying to take off when not at an airport' do
+    plane1 = Plane.new
+    expect{plane1.take_off}.to raise_error(RuntimeError)
   end
 
 end
