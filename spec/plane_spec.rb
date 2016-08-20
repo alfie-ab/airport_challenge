@@ -7,7 +7,7 @@ describe Plane do
     allow(airport).to receive(:placeholder).and_return(true)
   end
 
-  it 'should be able to respond to the method' do
+  it 'should be able to respond to the method land' do
     expect(subject).to respond_to(:land).with(1).arguments
   end
 
@@ -22,5 +22,18 @@ describe Plane do
     expect(subject.landed).to eq true
   end
 
+  it 'should be able to respond to the method take off' do
+    expect(subject).to respond_to(:take_off)
+  end
+
+  it 'should be able to take off from an airport' do
+    subject.take_off
+    expect(subject.airport).to eq []
+  end
+
+  it 'should change its landed status to false to show it is no longer at an airport' do
+    subject.take_off
+    expect(subject.landed).to eq false
+  end
 
 end
