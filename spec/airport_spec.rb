@@ -35,4 +35,14 @@ describe Airport do
     expect{subject.take_off(plane)}.to raise_error(RuntimeError)
   end
 
+  it 'should be able to receive the weather generator method' do
+    expect(subject).to respond_to(:weather_generator)
+  end
+
+  it 'should not allow a plane to take off when it is stormy' do
+    subject.land(plane)
+    subject.stub(:weather_generator).and_return(5)
+    expect{subject.take_off(plane)}.to raise_error(RuntimeError)
+  end
+
 end

@@ -1,3 +1,5 @@
+require 'plane.rb'
+
 describe Plane do
 
   it 'should respond to the method' do

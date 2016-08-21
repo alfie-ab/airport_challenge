@@ -1,14 +1,9 @@
 class Plane
 
-attr_reader :landed
+attr_accessor :landed
 
   def initialize
     @landed = false
-  end
-
-  def confirm_landing(airport)
-    fail "This plane has not landed" if airport.spaces == []
-    @landed = true
   end
 
 end
